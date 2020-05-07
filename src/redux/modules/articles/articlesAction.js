@@ -58,7 +58,7 @@ export const getArticles = ({
       type: actionTypes.GET_CATEGORY,
       payload: axios({
         method: 'GET',
-        url: `/categories/${categoryId}/articles?${filter}=${sortDr}&page=${page}&limit=${limit}`,
+        url: `${API_URL}/categories/${categoryId}/articles?${filter}=${sortDr}&page=${page}&limit=${limit}`,
         headers: getHeaders(getState)
       })
     });
