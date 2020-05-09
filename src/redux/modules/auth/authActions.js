@@ -25,3 +25,23 @@ export const init = () => (dispatch) => {
     }
   });
 };
+
+export const login = (phone, password) => (dispatch) => {
+  const response = dispatch({
+    type: actionTypes.LOGIN,
+    payload: axios({
+      method: 'POST',
+      url: `${API_URL}/auth/login`,
+      data: {
+        phone: `+${phone}`,
+        password
+      }
+    })
+  });
+
+  response.then((res) => {
+    if (res && res.value && res.value.data && res.value.data.token) {
+      localStorage.setItem('token', res.value.data.token);
+    }
+  });
+};

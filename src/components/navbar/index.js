@@ -29,11 +29,9 @@ const NavbarMain = () => (
       <StyledNav className="mr-auto">
         <StyledLink>
           <Nav.Link href="#"><Active>Subscribe</Active></Nav.Link>
-          {' '}
         </StyledLink>
         <StyledLink>
-          <Nav.Link href="#">Sign in</Nav.Link>
-          {' '}
+          <Link to="/login">Sign In</Link>
         </StyledLink>
         <HR />
         <StyledLink>

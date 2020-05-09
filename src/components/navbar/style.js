@@ -74,6 +74,21 @@ export const StyledLink = styled.div`
             opacity: 0.5;
         }
     }
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    a{
+        color:#212529;
+        opacity:0.8;
+        margin-left:10px;
+        
+        &:hover{
+            opacity:0.5;
+        }
+        
+    }
 `;
 
 export const HR = styled.div`
