@@ -1,10 +1,12 @@
 import styled from 'styled-components';
+import ReactImageFallback from 'react-image-fallback';
 
 export const UserAreaContainer = styled.div`
     width: 45px;
     height: 45px;
     position: relative;
     cursor: pointer;
+    margin-left:10px;
 `;
 
 
@@ -15,11 +17,13 @@ export const UserAvatarContainer = styled.div`
     border: 2px solid #fff;
     box-shadow: 0px 0px 12px -5px #000;
 
-    & img{
-        width: 100%;
-        height: 100%;
-        border-radius: 30px;
-    }
+`;
+
+export const ReactImageStyled = styled(ReactImageFallback)`
+  width: 100%;
+  height: 100%;
+  border-radius: 30px;
+  margin:0px;
 `;
 
 export const DropDownList = styled.div`
@@ -39,7 +43,7 @@ export const DropDownList = styled.div`
     }
 
 
-    display: none;
+    display: ${({ active }) => (active ? 'block' : 'none')};
     position: absolute;
     border-radius: 7px;
     background: #fff;
@@ -62,7 +66,7 @@ export const DropDownList = styled.div`
           font-size: 13px;
           padding: 15px 25px 16px 10px;
           text-decoration: none;
-          color: #1787e0;
+          color: #212529;
           transition: all .2s ease-out;
         }
       }
@@ -79,7 +83,7 @@ export const DropDownList = styled.div`
           width: 0px;
           height: 40px;
           position: absolute;
-          background: #2196F3;
+          background: #212529;
           margin-top: 4px;
           border-radius: 0 1px 1px 0;
           left: 0px;

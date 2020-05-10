@@ -9,6 +9,7 @@ export default {
   GET_USER: 'get-user',
   CATEGORY_PARAMS: 'category-params',
   LOGIN: 'login',
+  LOGOUT: 'logout',
   CLEAR_DATA: 'clear-data',
   FULFILLED: '_FULFILLED',
   REJECTED: '_REJECTED',
@@ -18,6 +19,5 @@ export default {
 
   REGISTER_REQUEST: 'REGISTER_REQUEST',
   REGISTER_SUCCESS: 'REGISTER_SUCCESS',
-  REGISTER_FAILURE: 'REGISTER_FAILURE',
-  LOGOUT: 'LOGOUT'
+  REGISTER_FAILURE: 'REGISTER_FAILURE'
 };

@@ -10,9 +10,7 @@ export const tokenLocalToRedux = (token) => ({
 
 export const init = () => (dispatch) => {
   const token = localStorage.getItem('token');
-  console.log('hey');
   if (token) {
-    console.log('i am here');
     dispatch({
       type: actionTypes.WRITE_TOKEN,
       payload: token
@@ -53,4 +51,13 @@ export const login = (phone, password, history) => (dispatch) => {
       history.push('/');
     }
   });
+};
+
+export const logout = (history) => (dispatch) => {
+  localStorage.removeItem('token');
+  dispatch({
+    type: actionTypes.LOGOUT
+  });
+
+  history.push('/');
 };

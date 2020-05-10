@@ -6,11 +6,12 @@ import HomePage from '../containers/HomePage';
 import CategoryPage from '../containers/CategoryPage';
 import ArticlePage from '../containers/Article';
 
-import NavbarHeader from '../components/navbar';
+import NavbarHeader from '../containers/Navbar';
 import NavMain from '../containers/Nav';
 import Footer from '../components/footer';
 import SignUpPage from '../containers/SignUpPage';
 import SignInPage from '../containers/SignInPage';
+import ProfilePage from '../containers/Profile';
 
 import ScrollToTop from '../hooks/use-scroll-to-top';
 
@@ -28,6 +29,7 @@ const Root = () => (
           <Route exact key="r-3" path="/articles/:slug" component={ArticlePage} />
           <Route exact key="r-4" path="/sign-up" component={SignUpPage} />
           <Route exact key="r-5" path="/login" component={SignInPage} />
+          <Route exact key="r-6" path="/my-profile" component={ProfilePage} />
         </Switch>
         <Footer />
       </ScrollToTop>

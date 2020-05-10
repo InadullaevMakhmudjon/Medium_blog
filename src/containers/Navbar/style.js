@@ -6,7 +6,6 @@ import { Navbar, Nav } from 'react-bootstrap';
 export const StyledNavbar = styled(Navbar)`
     width: 100%;
     height: 82px;
-    position: fixed;
     border-top:  1.5px solid #D5D7D8;
     background-color: white;
     border-bottom: 1px solid #D5D7D8;
@@ -93,14 +92,8 @@ export const StyledLink = styled.div`
 
 export const StyledAccountContainer = styled.div`
     img {
-        width: 25px;
-        height: 25px;
-        margin-left: 20px;
-        @media screen and ( max-width: 800px ) {
-            display: none;
-        }
         &:hover {
-            opacity: 0.5;
+            opacity: 0.8;
         }
     }
 

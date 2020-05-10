@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import jwtDecode from 'jwt-decode';
 import { Navbar, Nav } from 'react-bootstrap';
-import UserDropdown from '../UserDropdown';
+import UserDropdown from '../../components/UserDropdown';
 
 import { getUser } from '../../redux/modules/user/userAction';
+import { logout } from '../../redux/modules/auth/authActions';
 
 import {
   StyledNavbar,
@@ -25,7 +26,9 @@ import IconSearch from '../../assets/icons/search.svg';
 const NavbarMain = ({
   token,
   getUser,
-  user
+  user,
+  logout,
+  history
 }) => {
   const handleCheckUser = (token) => {
     const { userId } = jwtDecode(token);
@@ -41,6 +44,10 @@ const NavbarMain = ({
   }, [token]);
 
 
+  const handleLogout = () => {
+    logout(history);
+  };
+
   return (
     <>
       <StyledNavbar>
@@ -55,8 +62,7 @@ const NavbarMain = ({
             <Nav.Link href="#"><Active>Subscribe</Active></Nav.Link>
           </StyledLink>
           <StyledAccountContainer>
-            {user && user.id === 1 ? <Link to="/login">Sign In</Link> : <UserDropdown user={user} />}
-
+            {user && user.id === 1 ? <Link to="/login">Sign In</Link> : <UserDropdown user={user} handleLogout={handleLogout} />}
           </StyledAccountContainer>
           <HR />
           <StyledLink>
@@ -76,7 +82,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  getUser: (token) => dispatch(getUser(token))
+  getUser: (token) => dispatch(getUser(token)),
+  logout: (history) => dispatch(logout(history))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(NavbarMain);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(NavbarMain));
