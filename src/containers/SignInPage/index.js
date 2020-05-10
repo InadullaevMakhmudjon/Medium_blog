@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css';
@@ -24,7 +24,8 @@ import {
 const SignInPage = ({
   login,
   loading,
-  error
+  error,
+  history
 }) => {
   const [phone, setPhone] = useState('');
   const [password, setPassword] = useState('');
@@ -64,7 +65,7 @@ const SignInPage = ({
           />
         </InputWrapper>
         {error && <LabelStyled error>Phone number or password wrong</LabelStyled>}
-        <ButtonStyled onClick={() => login(phone, password)}>
+        <ButtonStyled onClick={() => login(phone, password, history)}>
           Login
           {loading && <span />}
         </ButtonStyled>
@@ -84,7 +85,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  login: (phone, password) => dispatch(login(phone, password))
+  login: (phone, password, history) => dispatch(login(phone, password, history))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(SignInPage);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SignInPage));

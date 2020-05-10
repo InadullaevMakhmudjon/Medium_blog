@@ -17,8 +17,8 @@ import ScrollToTop from '../hooks/use-scroll-to-top';
 import '../assets/fonts/font.css';
 
 const Root = () => (
-  <Auth>
-    <Router>
+  <Router>
+    <Auth render={() => (
       <ScrollToTop>
         <NavbarHeader />
         <NavMain />
@@ -31,8 +31,9 @@ const Root = () => (
         </Switch>
         <Footer />
       </ScrollToTop>
-    </Router>
-  </Auth>
+    )}
+    />
+  </Router>
 );
 
 export default Root;

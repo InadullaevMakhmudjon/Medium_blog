@@ -28,12 +28,15 @@ const map = {
     loader: true,
     loginError: false
   }),
-  [`${actionTypes.LOGIN}${actionTypes.FULFILLED}`]: (state, payload) => ({
-    ...state,
-    token: payload.token,
-    loader: false,
-    loginError: false
-  }),
+  [`${actionTypes.LOGIN}${actionTypes.FULFILLED}`]: (state, payload) => {
+    console.log(payload, 'payload');
+    return ({
+      ...state,
+      token: payload.token,
+      loader: false,
+      loginError: false
+    });
+  },
   [`${actionTypes.LOGIN}${actionTypes.REJECTED}`]: (state, payload) => ({
     ...state,
     loginError: true,

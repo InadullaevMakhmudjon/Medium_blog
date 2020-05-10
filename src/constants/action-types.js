@@ -6,6 +6,7 @@ export default {
   GET_CATEGORY_RECOMMENDED: 'get-category-recommended',
   GET_ARTICLE: 'get-article',
   GET_HOME: 'get-home',
+  GET_USER: 'get-user',
   CATEGORY_PARAMS: 'category-params',
   LOGIN: 'login',
   CLEAR_DATA: 'clear-data',

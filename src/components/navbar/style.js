@@ -91,6 +91,35 @@ export const StyledLink = styled.div`
     }
 `;
 
+export const StyledAccountContainer = styled.div`
+    img {
+        width: 25px;
+        height: 25px;
+        margin-left: 20px;
+        @media screen and ( max-width: 800px ) {
+            display: none;
+        }
+        &:hover {
+            opacity: 0.5;
+        }
+    }
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    a{
+        color:#212529;
+        opacity:0.8;
+        margin-left:10px;
+        
+        &:hover{
+            opacity:0.5;
+        }
+        
+    }
+`;
+
 export const HR = styled.div`
     border-left:  1.5px solid #D5D7D8;
     margin-left: 30px;

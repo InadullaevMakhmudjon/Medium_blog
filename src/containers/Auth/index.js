@@ -1,68 +1,59 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import { init, tokenLocalToRedux } from '../../redux/modules/auth/authActions';
+import { init } from '../../redux/modules/auth/authActions';
 
 
 import Spinner from '../../components/spinner';
 
 const Auth = ({
-  children,
   token,
   error,
   loading,
   init,
-  tokenLocalToRedux
+  render
 }) => {
-  const localToken = localStorage.getItem('token');
+  useEffect(() => {
+    if (!token && !loading && !error) {
+      init();
+    }
+  });
 
-  if (!token && localToken) {
-    tokenLocalToRedux(localToken);
-  }
-
-  if (!token && !loading && !error && !localToken) {
-    init();
-  }
 
   return (
     <>
       {loading && <Spinner />}
-      {!loading && token && children}
+      {!loading && token && render()}
     </>
   );
 };
 
 Auth.defaultProps = {
-  children: '',
   init: () => {},
-  tokenLocalToRedux: () => {},
   token: '',
   loading: false,
-  error: false
+  error: false,
+  render: () => {}
 };
 
 Auth.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node
-  ]),
   init: PropTypes.func,
-  tokenLocalToRedux: PropTypes.func,
   token: PropTypes.string,
   loading: PropTypes.bool,
-  error: PropTypes.bool
+  error: PropTypes.bool,
+  render: PropTypes.func
 };
 
 const mapStateToProps = (state) => ({
   token: state.authReducer.token,
   loading: state.authReducer.loading,
-  error: state.authReducer.error
+  error: state.authReducer.error,
+  loader: state.authReducer.loader
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  init: () => dispatch(init()),
-  tokenLocalToRedux: (token) => dispatch(tokenLocalToRedux(token))
+  init: () => dispatch(init())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Auth);
