@@ -44,6 +44,24 @@ export const RowContainer = styled.div`
     padding-right:10px;
 `;
 
+export const RowContainerPhoneInput = styled.div`
+    flex: 0 50%;
+    display:flex;
+    padding-left:10px;
+    padding-right:10px;
+
+    .react-tel-input {
+        width:67%;
+    }
+    .react-tel-input .form-control{
+        width:100%;
+        border-radius:0px;
+    }
+    .react-tel-input .flag-dropdown{
+        height:35px;
+    }
+`;
+
 export const RowContainerWithDesc = styled.div`
     flex: 0 50%;
     display:flex;

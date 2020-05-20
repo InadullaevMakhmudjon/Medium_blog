@@ -50,15 +50,15 @@ export const IconWrapper = styled.div`
 `;
 
 export const ImageWrapper = styled.div`
-    width: 100%;
-    height: 60%;
-    background-position: center;
-    background-size: cover;
     margin-bottom: 40px;
+    display:flex;
+    position:relative;
+    
     img {
         object-fit: cover;
         width: 100%;
         height: 100%;
+        max-height:350px;
     }
 `;
 

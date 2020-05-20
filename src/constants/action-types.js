@@ -7,6 +7,7 @@ export default {
   GET_ARTICLE: 'get-article',
   GET_HOME: 'get-home',
   GET_USER: 'get-user',
+  UPDATE_USER: 'update-user',
   CATEGORY_PARAMS: 'category-params',
   LOGIN: 'login',
   LOGOUT: 'logout',

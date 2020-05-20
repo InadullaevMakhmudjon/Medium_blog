@@ -18,3 +18,20 @@ export const getUser = (userId) => (dispatch, getState) => {
     });
   }
 };
+
+
+export const updateUser = (data) => (dispatch, getState) => {
+  const { token } = getState().authReducer;
+  const { user } = getState().userReducer;
+  if (token && user) {
+    dispatch({
+      type: actionTypes.UPDATE_USER,
+      payload: axios({
+        method: 'POST',
+        url: `${API_URL}/users/${user.id}`,
+        headers: getHeaders(getState),
+        data
+      })
+    });
+  }
+};

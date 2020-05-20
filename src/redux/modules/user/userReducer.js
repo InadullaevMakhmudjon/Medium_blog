@@ -20,6 +20,20 @@ const map = {
     ...state,
     loading: false,
     error: true
+  }),
+  [`${actionTypes.UPDATE_USER}${actionTypes.PENDING}`]: (state) => ({
+    ...state,
+    loading: true
+  }),
+  [`${actionTypes.UPDATE_USER}${actionTypes.FULFILLED}`]: (state, { payload }) => ({
+    ...state,
+    loading: false,
+    user: payload.data
+  }),
+  [`${actionTypes.UPDATE_USER}${actionTypes.REJECTED}`]: (state, action) => ({
+    ...state,
+    loading: false,
+    error: true
   })
 
 };
