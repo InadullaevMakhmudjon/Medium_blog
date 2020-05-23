@@ -12,6 +12,24 @@ export const StyledSignUpPage = styled.div`
     font-family: 'Poppins', sans-serif;
     font-weight: 400;
     background-color: #EFF0F0;
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+    padding:20px;
+
+    & .react-tel-input{
+        width:350px;
+        margin:12px 0px;
+    }
+
+    & .react-tel-input .form-control{
+        width:100%;
+        border-radius:0px;
+
+    }
 `;
 
 export const FormStyled = styled.form`
@@ -30,6 +48,7 @@ export const Input = styled.input`
     border: 1px solid #CCCCCC;
     margin-top: 12px;
     margin-bottom: 12px;
+    padding:5px 10px;
 
     &::placeholder {
         font-size: 14px;
@@ -43,26 +62,6 @@ export const Input = styled.input`
         cursor: pointer;
     }
 `;
-
-// export const ErrorStyle = css`
-// 	width: 350px;
-//     height: 40px;
-//     border: 1px solid red;
-//     margin-top: 12px;
-//     margin-bottom: 12px;
-
-//     &::placeholder {
-//         font-size: 14px;
-//         color: red;
-//         font-weight: 400;
-//         line-height: normal;
-//         text-indent: 10px;
-//     }
-//     &:hover {
-//         border-color: #CCCCCC;
-//         cursor: pointer;
-//     }
-// `;
 
 export const TextWrapper = styled.div`
     width: fit-content;

@@ -35,14 +35,6 @@ const SignInPage = ({
 
   }, [user]);
 
-  const handlePhoneInput = (e) => {
-
-  };
-
-  const handleSubmit = () => {
-
-  };
-
   if (user && user.id !== 1) {
     return <Redirect to="/" />;
   }

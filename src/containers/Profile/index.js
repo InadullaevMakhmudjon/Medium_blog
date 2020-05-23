@@ -119,7 +119,7 @@ const Profile = ({ userDetails, loading, updateUser,history }) => {
             <RowContainer>
               <LabelStyled>Last Name</LabelStyled>
               <InputStyled
-                value={user.lastname}
+                value={user.secondname}
                 onChange={(e) => handleLastName(e)}
               />
             </RowContainer>
