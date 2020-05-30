@@ -29,11 +29,12 @@ import {
 } from './style';
 
 const Profile = ({ userDetails, loading, updateUser,history }) => {
-  const [user, setUser] = useState(userDetails);
+  const [user, setUser] = useState();
   const [phoneError, setPhoneError] = useState(false);
   useEffect(() => {
     if (!user && userDetails) {
       setUser({
+        id:userDetails.id,
         firstname: userDetails.firstname,
         secondname: userDetails.secondname,
         quote: userDetails.quote,
@@ -80,7 +81,7 @@ const Profile = ({ userDetails, loading, updateUser,history }) => {
       phone: value
     });
   };
-
+  //TODO handle phone update separately
   const handleUpdateUser = () => {
     updateUser(user);
   };

@@ -24,13 +24,16 @@ export const updateUser = (data) => (dispatch, getState) => {
   const { token } = getState().authReducer;
   const { user } = getState().userReducer;
   if (token && user) {
+    const { phone, ...user } = data;
     dispatch({
       type: actionTypes.UPDATE_USER,
       payload: axios({
         method: 'POST',
         url: `${API_URL}/users/${user.id}`,
         headers: getHeaders(getState),
-        data
+        data: {
+          ...user
+        }
       })
     });
   }

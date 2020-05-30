@@ -120,19 +120,21 @@ export const Heading = styled.span`
 export const ForgotPasswordLink = styled(Link)`
     font-size: 16px;
     font-weight: 400;
-    color: #77D89E;
+    color: #444;
     margin-top: 30px;
     &:hover {
         cursor: pointer;
         text-decoration: none;
-        color: #77D89E;
+        color: #444;
+        opacity:0.7;
     }
 `;
 
 export const ButtonStyled = styled.button`
     width: 350px;
     height: 38px;
-    background: #03A87C;
+    background: #111;
+    color:#fff;
     font-size: 13px;
     font-weight: 500;
     text-align: center;

@@ -9,6 +9,8 @@ export default {
   GET_USER: 'get-user',
   UPDATE_USER: 'update-user',
   CATEGORY_PARAMS: 'category-params',
+  VERIFY_SEND: 'verify-send',
+  VERIFY_PHONE: 'verify-phone',
   LOGIN: 'login',
   LOGOUT: 'logout',
   CLEAR_DATA: 'clear-data',

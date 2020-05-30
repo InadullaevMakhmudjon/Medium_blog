@@ -5,7 +5,8 @@ import {
   articlesReducer,
   singleArticleReducer,
   homeReducer,
-  userReducer
+  userReducer,
+  forgotPasswordReducer
 } from '../modules';
 
 
@@ -15,5 +16,6 @@ export default combineReducers({
   articlesReducer,
   singleArticleReducer,
   homeReducer,
-  userReducer
+  userReducer,
+  forgetPassword: forgotPasswordReducer
 });
