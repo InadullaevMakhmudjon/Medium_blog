@@ -9,8 +9,8 @@ import { TitlesOfSections } from '../constant.styles';
 const ArticleRelatedPreview = ({ articles, loading }) => (
   <StyledContainer>
     <TitlesOfSections>Related Articles</TitlesOfSections>
-    {loading && <Spinner />}
-    {articles && articles.length && (
+
+    {articles && (
       <Row>
         {articles.map((article, index) => (
           <ArticleRelated
@@ -20,6 +20,7 @@ const ArticleRelatedPreview = ({ articles, loading }) => (
         ))}
       </Row>
     )}
+    {loading && <Spinner />}
   </StyledContainer>
 );
 

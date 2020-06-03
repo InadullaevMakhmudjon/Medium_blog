@@ -2,8 +2,10 @@ import actionTypes from '../../../constants/action-types';
 
 const defaultState = {
   loading: false,
+  loader: false,
   error: false,
-  token: ''
+  token: '',
+  loginError: false
 };
 
 const map = {
@@ -21,9 +23,29 @@ const map = {
     loading: false,
     error: true
   }),
+  [`${actionTypes.LOGIN}${actionTypes.PENDING}`]: (state) => ({
+    ...state,
+    loader: true,
+    loginError: false
+  }),
+  [`${actionTypes.LOGIN}${actionTypes.FULFILLED}`]: (state, payload) => ({
+    ...state,
+    token: payload.token,
+    loader: false,
+    loginError: false
+  }),
+  [`${actionTypes.LOGIN}${actionTypes.REJECTED}`]: (state, payload) => ({
+    ...state,
+    loginError: true,
+    loader: false
+  }),
   [actionTypes.WRITE_TOKEN]: (state, { payload }) => ({
     ...state,
     token: payload
+  }),
+  [actionTypes.LOGOUT]: (state) => ({
+    ...state,
+    token: ''
   })
 };
 

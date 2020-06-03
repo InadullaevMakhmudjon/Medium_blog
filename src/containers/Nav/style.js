@@ -10,11 +10,6 @@ export const StyledNav = styled(Nav)`
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    margin-top: 90px;
-    @media screen and ( max-width: 1050px ) {
-        display: none;
-        margin-top: 0px;
-    }
     
 `;
 

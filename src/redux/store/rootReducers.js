@@ -4,7 +4,9 @@ import {
   navReducer,
   articlesReducer,
   singleArticleReducer,
-  homeReducer
+  homeReducer,
+  userReducer,
+  forgotPasswordReducer
 } from '../modules';
 
 
@@ -13,5 +15,7 @@ export default combineReducers({
   navReducer,
   articlesReducer,
   singleArticleReducer,
-  homeReducer
+  homeReducer,
+  userReducer,
+  forgetPassword: forgotPasswordReducer
 });

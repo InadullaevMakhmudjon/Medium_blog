@@ -16,14 +16,11 @@ const map = {
     loading: false,
     list: payload.data
   }),
-  [`${actionTypes.GET_NAVBAR}${actionTypes.REJECTED}`]: (state, action) => {
-    console.log(action, 'action');
-    return ({
-      ...state,
-      loading: false,
-      error: true
-    });
-  }
+  [`${actionTypes.GET_NAVBAR}${actionTypes.REJECTED}`]: (state, action) => ({
+    ...state,
+    loading: false,
+    error: true
+  })
 
 };
 

@@ -1,5 +1,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import React from 'react';
+import React, { useState } from 'react';
+import PhoneInput from 'react-phone-input-2';
+import 'react-phone-input-2/lib/style.css';
 
 import {
   StyledSignUpPage,
@@ -17,175 +19,111 @@ import {
 
 import ButtonPrimary from '../../components/ButtonPrimaryMedium/index';
 
-class SignUpPage extends React.Component {
-  constructor(props) {
-    super(props);
+const SignUpPage = () => {
+  const [firstName, setFirstName] = useState('');
+  const [secondName, setSecondName] = useState('');
+  const [phone, setPhone] = useState('');
+  const [password, setPassword] = useState('');
 
-    this.state = {
-      user: {
-        firstname: '',
-        lastname: '',
-        phoneNumber: '',
-        password: '',
-        errorFirstname: '',
-        errorLastname: '',
-        errorPhoneNumber: '',
-        errorPassword: ''
-      },
-      submitted: false
-    };
+  const [firstNameError, setFirstNameError] = useState(false);
+  const [secondNameError, setSecondNameError] = useState(false);
+  const [phoneError, setPhoneError] = useState(false);
+  const [passwordError, setPasswordError] = useState(false);
 
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
+  const removeErrors = () => {
+    setFirstNameError(false);
+    setSecondNameError(false);
+    setPhoneError(false);
+    setPasswordError(false);
+  };
 
-  handleChange(event) {
-    const { name, value } = event.target;
-    const { user } = this.state;
-    this.setState({
-      user: {
-        ...user,
-        [name]: value
-      }
-    });
-  }
-
-  validate() {
-    const { user } = this.state;
-    let errorFirstname = '';
-    let errorLastname = '';
-    let errorPhoneNumber = '';
-    let errorPassword = '';
-
-    if (!user.firstname) {
-      errorFirstname = 'Name is missing!';
-    } else if (user.firstname.length < 3) {
-      errorFirstname = 'Name cannot be less than 3 letters!';
+  const handleValidation = () => {
+    if (!firstName.length) {
+      setFirstNameError(true);
     }
 
-    if (!user.lastname) {
-      errorLastname = 'Lastname is missing!';
-    } else if (user.lastname.length < 3) {
-      errorLastname = 'Lastname cannot be less than 3 letters!';
+    if (!secondName.length) {
+      setSecondNameError(true);
     }
 
-    if (!user.phonenumber || user.phonenumber === '') {
-      errorPhoneNumber = 'Please enter your phonenumber';
-    } else if (user.phoneNumber.length < 13) {
-      errorPhoneNumber = 'Invalid phonenumber!';
-    } else if (!user.phoneNumber.includes('+')) {
-      errorPhoneNumber = 'Incorrect phonenumber, (+) is missing';
+    if (phone.length < 6) {
+      setPhoneError(true);
     }
 
-    if (!user.password) {
-      errorPassword = 'Password is missing!';
-    } else if (user.password.length < 6) {
-      errorPassword = 'Password cannot be less than 6 characters!';
+    if (password.length < 6) {
+      setPasswordError(true);
     }
-
-    if (errorPhoneNumber || errorFirstname || errorLastname || errorPassword) {
-      this.setState({
-        user: {
-          ...user,
-          errorFirstname,
-          errorLastname,
-          errorPhoneNumber,
-          errorPassword
-        }
-      });
+    if (!firstName.length || !secondName.length || phone.length < 6 || password.length < 6) {
       return false;
     }
-
+    removeErrors();
     return true;
-  }
+  };
 
-
-  handleSubmit(e) {
-    e.preventDefault();
-    const { user } = this.state;
-    const isValid = this.validate();
-    if (isValid) {
-      console.log(user);
-      // clear form
-      this.setState({
-        user: {
-          firstname: '',
-          lastname: '',
-          phoneNumber: '',
-          password: '',
-          errorFirstname: '',
-          errorLastname: '',
-          errorPhoneNumber: '',
-          errorPassword: ''
-        },
-        submitted: true
-      });
+  const createAccountHandler = () => {
+    if (handleValidation()) {
+      console.log('hey');
     }
-    // if (user.firstname && user.lastname && user.phoneNumber && user.password) {
-    //   this.props.register(user);
-    // }
-  }
+  };
 
-  render() {
-    const { user, submitted } = this.state;
-    return (
-      <StyledSignUpPage>
-        <FormStyled onSubmit={this.handleSubmit}>
-          <TextWrapper>
-            <Heading>Join to BiznesRivoj.</Heading>
-            <Title>Sign up to get newly updates from BiznesRivoj.</Title>
-            <Title>
-              Already have an account ?
-              <SignInLink to="login">
-                Sign in
-              </SignInLink>
-            </Title>
-          </TextWrapper>
-          <Input
-            type="text"
-            name="firstname"
-            placeholder="Firstname"
-            value={user.firstname}
-            onChange={this.handleChange}
-          />
-          <ErrorMessage>{user.errorFirstname}</ErrorMessage>
-          <Input
-            type="text"
-            name="lastname"
-            placeholder="Lastname"
-            value={user.lastname}
-            onChange={this.handleChange}
-          />
-          <ErrorMessage>{user.errorLastname}</ErrorMessage>
-          <Input
-            type="tel"
-            name="phoneNumber"
-            placeholder="Phone number"
-            value={user.phoneNumber}
-            onChange={this.handleChange}
-          />
-          <ErrorMessage>{user.errorPhoneNumber}</ErrorMessage>
-          <Input
-            type="password"
-            name="password"
-            placeholder="Password"
-            value={user.password}
-            onChange={this.handleChange}
-          />
-          <ErrorMessage>{user.errorPassword}</ErrorMessage>
-          <CheckboxContainer>
-            <input type="checkbox" />
-            <Label htmlfor="checkbox">
-              Sign up to receive occasional emails from BiznesRivoj.
-              You may unsubscribe at any time.
-            </Label>
-          </CheckboxContainer>
-          <ButtonPrimary btnForm>Create Account</ButtonPrimary>
-          <PrivacyLink to="/privacy-policy">Privacy Policy</PrivacyLink>
-        </FormStyled>
-      </StyledSignUpPage>
-    );
-  }
-}
+
+  return (
+    <StyledSignUpPage>
+      <TextWrapper>
+        <Heading>Join to BiznesRivoj.</Heading>
+        <Title>Sign up to get newly updates from BiznesRivoj.</Title>
+        <Title>
+          Already have an account ?
+          <SignInLink to="login">
+            Sign in
+          </SignInLink>
+        </Title>
+      </TextWrapper>
+      <Input
+        type="text"
+        name="firstname"
+        placeholder="Firstname"
+        value={firstName}
+        onChange={(e) => setFirstName(e.target.value)}
+      />
+      {firstNameError && <ErrorMessage>Please provide your first name</ErrorMessage>}
+      <Input
+        type="text"
+        name="lastname"
+        placeholder="Lastname"
+        value={secondName}
+        onChange={(e) => setSecondName(e.target.value)}
+      />
+      {secondNameError && <ErrorMessage>Please provide your second name</ErrorMessage>}
+      <PhoneInput
+        country="uz"
+        value={phone}
+        masks={{ uz: '.. ... ....' }}
+        onChange={(phone) => setPhone(phone)}
+        placeholder="+998 99 865 9217"
+      />
+      {phoneError && <ErrorMessage>Please provide your Phone number</ErrorMessage>}
+      <Input
+        type="password"
+        name="password"
+        placeholder="Password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+      />
+      {passwordError && <ErrorMessage>Password should be more than 6 character</ErrorMessage>}
+      <CheckboxContainer>
+        <input type="checkbox" />
+        <Label htmlfor="checkbox">
+          Sign up to receive occasional emails from BiznesRivoj.
+          You may unsubscribe at any time.
+        </Label>
+      </CheckboxContainer>
+      <ButtonPrimary btnForm onClick={createAccountHandler}>Create Account</ButtonPrimary>
+      <PrivacyLink to="/privacy-policy">Privacy Policy</PrivacyLink>
+
+    </StyledSignUpPage>
+  );
+};
+
 
 export default SignUpPage;

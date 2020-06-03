@@ -6,7 +6,13 @@ export default {
   GET_CATEGORY_RECOMMENDED: 'get-category-recommended',
   GET_ARTICLE: 'get-article',
   GET_HOME: 'get-home',
+  GET_USER: 'get-user',
+  UPDATE_USER: 'update-user',
   CATEGORY_PARAMS: 'category-params',
+  VERIFY_SEND: 'verify-send',
+  VERIFY_PHONE: 'verify-phone',
+  LOGIN: 'login',
+  LOGOUT: 'logout',
   CLEAR_DATA: 'clear-data',
   FULFILLED: '_FULFILLED',
   REJECTED: '_REJECTED',
@@ -16,10 +22,5 @@ export default {
 
   REGISTER_REQUEST: 'REGISTER_REQUEST',
   REGISTER_SUCCESS: 'REGISTER_SUCCESS',
-  REGISTER_FAILURE: 'REGISTER_FAILURE',
-
-  LOGIN_REQUEST: 'LOGIN_REQUEST',
-  LOGIN_SUCCESS: 'LOGIN_SUCCESS',
-  LOGIN_FAILURE: 'LOGIN_FAILURE',
-  LOGOUT: 'LOGOUT'
+  REGISTER_FAILURE: 'REGISTER_FAILURE'
 };

@@ -6,7 +6,6 @@ import { Navbar, Nav } from 'react-bootstrap';
 export const StyledNavbar = styled(Navbar)`
     width: 100%;
     height: 82px;
-    position: fixed;
     border-top:  1.5px solid #D5D7D8;
     background-color: white;
     border-bottom: 1px solid #D5D7D8;
@@ -73,6 +72,44 @@ export const StyledLink = styled.div`
         &:hover {
             opacity: 0.5;
         }
+    }
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    a{
+        color:#212529;
+        opacity:0.8;
+        margin-left:10px;
+        
+        &:hover{
+            opacity:0.5;
+        }
+        
+    }
+`;
+
+export const StyledAccountContainer = styled.div`
+    img {
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    a{
+        color:#212529;
+        opacity:0.8;
+        margin-left:10px;
+        
+        &:hover{
+            opacity:0.5;
+        }
+        
     }
 `;
 

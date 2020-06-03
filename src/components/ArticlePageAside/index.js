@@ -17,7 +17,7 @@ import { HeadingSmall, TitlesOfSections } from '../constant.styles';
 
 const ArticlePageAside = ({ article, loading }) => (
   <StyledContainer>
-    {loading && <Spinner />}
+
     {
       article && (
         <>
@@ -40,13 +40,14 @@ const ArticlePageAside = ({ article, loading }) => (
           </Col1>
           <Col2>
             <TitlesOfSections>Recommended</TitlesOfSections>
+            {/* <RecommendedArticle />
             <RecommendedArticle />
-            <RecommendedArticle />
-            <RecommendedArticle />
+            <RecommendedArticle /> */}
           </Col2>
         </>
       )
     }
+    {loading && <Spinner />}
   </StyledContainer>
 );
 

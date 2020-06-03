@@ -34,7 +34,7 @@ const HomePage = ({
           <Spinner />
         </>
       )}
-      {!loading && homeList && homeList.length && (
+      {!loading && homeList && homeList.length ? (
         <>
           <TopArticlesContainer main={homeList.slice(1, 2)} />
           <Content>
@@ -46,7 +46,7 @@ const HomePage = ({
             ))}
           </Content>
         </>
-      )}
+      ) : null}
     </MainPageStyled>
   );
 };
