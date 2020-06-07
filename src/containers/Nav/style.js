@@ -13,12 +13,46 @@ export const StyledNav = styled(Nav)`
     
 `;
 
+export const CarouselWrapper = styled.div`
+    max-width:800px;
+    width:100%;
+    display:block;
+    margin:auto;
+
+    @media (max-width: 1024px) {
+        max-width:750px;
+    
+        & .slick-prev:before, .slick-next:before{
+           color:#212529;
+        }
+    }
+    @media (max-width: 900px) {
+        max-width:650px;
+    }
+    
+    @media (max-width: 767px) {
+        max-width:550px;
+    }
+
+    @media (max-width: 600px) {
+        max-width:400px;
+    }
+
+    @media (max-width: 500px) {
+        max-width:300px;
+    }
+
+    @media (max-width: 350px) {
+        max-width:250px;
+    }
+    
+}
+
+
+`;
+
 export const LinkContainer = styled.div`
-    width: fit-content;
-    height: fit-content;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+    width:100%;
 `;
 
 export const LinkStyled = styled(Link)`
