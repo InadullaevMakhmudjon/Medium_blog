@@ -5,6 +5,8 @@ import jwtDecode from 'jwt-decode';
 import { Navbar, Nav } from 'react-bootstrap';
 import UserDropdown from '../../components/UserDropdown';
 
+import useWidowSize from '../../hooks/use-window-size';
+
 import { getUser } from '../../redux/modules/user/userAction';
 import { logout } from '../../redux/modules/auth/authActions';
 
@@ -20,6 +22,7 @@ import {
 } from './style';
 
 import BrandLogo from '../../assets/images/logo.png';
+import BrandLogoMobile from '../../assets/icons/logo_small.svg';
 import IconSearch from '../../assets/icons/search.svg';
 
 
@@ -30,6 +33,8 @@ const NavbarMain = ({
   logout,
   history
 }) => {
+  const { width } = useWidowSize();
+
   const handleCheckUser = (token) => {
     const { userId } = jwtDecode(token);
     if (userId) {
@@ -53,7 +58,7 @@ const NavbarMain = ({
       <StyledNavbar>
         <BrandContainer>
           <Link to="/">
-            <img src={BrandLogo} alt="icon-brand" />
+            {width > 767 ? <img src={BrandLogo} alt="icon-brand" /> : <img src={BrandLogoMobile} alt="icon-brand" />}
           </Link>
 
         </BrandContainer>
