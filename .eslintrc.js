@@ -15,6 +15,7 @@ module.exports = {
       'react/no-children-prop': 'off',
       "import/prefer-default-export": "off",
       "linebreak-style":  "off",
-      "jsx-a11y/anchor-is-valid": "off"
+      "jsx-a11y/anchor-is-valid": "off",
+      "no-underscore-dangle": 0
     }
   };
