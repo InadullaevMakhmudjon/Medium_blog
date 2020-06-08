@@ -1,21 +1,20 @@
 import styled, { css } from 'styled-components';
 
-const getButtonStyles = props => {
-    if (props.updateBtn) {
-        return  UpdateBtn;
-    } else if (props.primaryBig) {
-        return BtnPrimaryBig
-    } else if (props.btnLink) {
-        return BtnLink;
-    } else if (props.btnFollowGreen) {
-        return BtnFollowGreen;
-    } else if (props.btnFollowGrey) {
-        return BtnFollowGrey;
-    } else if (props.btnForm) {
-        return BtnForm;
-    } else {
-        return StyledButton
-    }
+const getButtonStyles = (props) => {
+  if (props.updateBtn) {
+    return UpdateBtn;
+  } if (props.primaryBig) {
+    return BtnPrimaryBig;
+  } if (props.btnLink) {
+    return BtnLink;
+  } if (props.btnFollowGreen) {
+    return BtnFollowGreen;
+  } if (props.btnFollowGrey) {
+    return BtnFollowGrey;
+  } if (props.btnForm) {
+    return BtnForm;
+  }
+  return StyledButton;
 };
 
 

@@ -1,7 +1,8 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css';
+import Firebase from '../../config/firebase';
 
 import {
   StyledSignUpPage,
@@ -24,17 +25,61 @@ const SignUpPage = () => {
   const [secondName, setSecondName] = useState('');
   const [phone, setPhone] = useState('');
   const [password, setPassword] = useState('');
+  const [recaptcha, setRecaptcha] = useState(null);
+  const [recaptchaToken, setRecaptchaToken] = useState(null);
+  const [confirmationResult, setConfirmationResult] = useState(null);
+  const [code, setCode] = useState(null);
+  const [showCode, setShowCode] = useState(false);
+  const [showRecaptcha, setShowRecaptcha] = useState(true);
 
   const [firstNameError, setFirstNameError] = useState(false);
   const [secondNameError, setSecondNameError] = useState(false);
   const [phoneError, setPhoneError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
+  const firebase = Firebase.instance;
+
+  useEffect(() => {
+    const recaptcha = firebase.setUpRecaptcha('recaptcha-container', {
+      size: 'medium',
+      callback: setRecaptchaToken
+    });
+    setRecaptcha(recaptcha);
+  }, []);
+
+  useEffect(() => {
+    if (recaptcha) {
+      recaptcha.render().then((widgetId) => {
+        window.recaptchaWidgetId = widgetId;
+      });
+    }
+  }, [recaptcha]);
+
+  useEffect(() => {
+    if (phone.length === 12 && recaptchaToken) {
+      firebase.signInWithPhoneNumber(`+${phone}`, recaptcha)
+        .then((result) => {
+          setConfirmationResult(result);
+          setRecaptchaToken(null);
+          setShowRecaptcha(false);
+          setShowCode(true);
+        }).catch((err) => alert(err.message));
+    }
+  }, [phone]);
 
   const removeErrors = () => {
     setFirstNameError(false);
     setSecondNameError(false);
     setPhoneError(false);
     setPasswordError(false);
+  };
+
+  const verify = () => {
+    if (confirmationResult) {
+      confirmationResult.confirm(code).then(() => {
+        alert('Successfully confirmed');
+        removeErrors();
+      }).catch((err) => alert(err.message));
+    }
   };
 
   const handleValidation = () => {
@@ -53,19 +98,22 @@ const SignUpPage = () => {
     if (password.length < 6) {
       setPasswordError(true);
     }
+
+    // eslint-disable-next-line max-len
     if (!firstName.length || !secondName.length || phone.length < 6 || password.length < 6) {
       return false;
     }
-    removeErrors();
+    // removeErrors();
     return true;
   };
 
   const createAccountHandler = () => {
     if (handleValidation()) {
-      console.log('hey');
+      verify();
+    } else {
+      console.log('Errored...');
     }
   };
-
 
   return (
     <StyledSignUpPage>
@@ -79,6 +127,7 @@ const SignUpPage = () => {
           </SignInLink>
         </Title>
       </TextWrapper>
+      {firstNameError && <ErrorMessage>Please provide your first name</ErrorMessage>}
       <Input
         type="text"
         name="firstname"
@@ -86,7 +135,7 @@ const SignUpPage = () => {
         value={firstName}
         onChange={(e) => setFirstName(e.target.value)}
       />
-      {firstNameError && <ErrorMessage>Please provide your first name</ErrorMessage>}
+      {secondNameError && <ErrorMessage>Please provide your second name</ErrorMessage>}
       <Input
         type="text"
         name="lastname"
@@ -94,15 +143,7 @@ const SignUpPage = () => {
         value={secondName}
         onChange={(e) => setSecondName(e.target.value)}
       />
-      {secondNameError && <ErrorMessage>Please provide your second name</ErrorMessage>}
-      <PhoneInput
-        country="uz"
-        value={phone}
-        masks={{ uz: '.. ... ....' }}
-        onChange={(phone) => setPhone(phone)}
-        placeholder="+998 99 865 9217"
-      />
-      {phoneError && <ErrorMessage>Please provide your Phone number</ErrorMessage>}
+      {passwordError && <ErrorMessage>Password should be more than 6 character</ErrorMessage>}
       <Input
         type="password"
         name="password"
@@ -110,7 +151,26 @@ const SignUpPage = () => {
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
-      {passwordError && <ErrorMessage>Password should be more than 6 character</ErrorMessage>}
+      <div id="recaptcha-container" style={{ display: showRecaptcha ? '' : 'none' }} />
+      {phoneError && <ErrorMessage>Please provide your Phone number</ErrorMessage>}
+      <PhoneInput
+        country="uz"
+        value={phone}
+        masks={{ uz: '.. ... ....' }}
+        disabled={!recaptchaToken}
+        onChange={(phone) => setPhone(phone)}
+        placeholder="+998 99 865 9217"
+      />
+      {
+        showCode ? (
+          <Input
+            type="number"
+            name="code"
+            placeholder="Code"
+            onChange={(e) => setCode(e.target.value)}
+          />
+        ) : null
+      }
       <CheckboxContainer>
         <input type="checkbox" />
         <Label htmlfor="checkbox">
@@ -120,7 +180,6 @@ const SignUpPage = () => {
       </CheckboxContainer>
       <ButtonPrimary btnForm onClick={createAccountHandler}>Create Account</ButtonPrimary>
       <PrivacyLink to="/privacy-policy">Privacy Policy</PrivacyLink>
-
     </StyledSignUpPage>
   );
 };

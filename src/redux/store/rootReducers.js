@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+
 import {
   authReducer,
   navReducer,
@@ -8,7 +9,6 @@ import {
   userReducer,
   forgotPasswordReducer
 } from '../modules';
-
 
 export default combineReducers({
   authReducer,

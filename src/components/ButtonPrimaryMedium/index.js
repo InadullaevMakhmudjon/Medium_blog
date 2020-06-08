@@ -4,7 +4,7 @@ import { StyledButton } from './styles';
 
 
 const ButtonPrimary = (props) => (
-    <StyledButton {...props} />
+  <StyledButton {...props} />
 );
 
 export default ButtonPrimary;
