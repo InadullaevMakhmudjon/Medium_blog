@@ -2,8 +2,9 @@ import styled from 'styled-components';
 
 
 export const MainPageStyled = styled.div`
-    font-family: 'Poppins', sans-serif;
     font-weight: 400;
+    max-width:1440px;
+    margin:auto;
 `;
 
 export const Content = styled.div`
@@ -13,8 +14,6 @@ export const Content = styled.div`
     flex-direction: row;
     flex-wrap: wrap;
     align-items:flex-start;
-    margin-right: 20px;
-    margin-left: 20px;
 `;
 
 export const HR = styled.hr`

@@ -51,7 +51,6 @@ const ArticleRowTwo = ({ article }) => (
         </StarIcon>
       </PublishInfo>
     </TextsHolder>
-    <ImgWrapper><img src={IconSave} alt="icon-save" /></ImgWrapper>
   </ArticlesContainer>
 );
 

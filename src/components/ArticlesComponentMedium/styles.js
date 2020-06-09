@@ -10,6 +10,8 @@ export const ArticlesContainer = styled.div`
     flex-flow: column wrap;
     align-items: center;
     justify-content: center;
+
+  
 `;
 
 export const ImageContainer = styled.div`
@@ -29,8 +31,14 @@ export const TextsHolder = styled.div`
     align-items: flex-start;
     margin-left: 70px;
     margin-right: 25px;
+
     @media screen and ( max-width: 1119px ) {
         margin-left: 0;
+    }
+
+    @media screen and ( max-width: 720px ) {
+        width:100%;
+        margin-right:0px;
     }
 `;
 

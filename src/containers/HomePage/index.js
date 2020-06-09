@@ -34,7 +34,7 @@ const HomePage = ({
           <Spinner />
         </>
       )}
-      {!loading && homeList && homeList.length ? (
+      {!loading ? (
         <>
           <TopArticlesContainer main={homeList.slice(1, 2)} />
           <Content>

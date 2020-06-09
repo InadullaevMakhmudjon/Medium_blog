@@ -8,6 +8,7 @@ export const ArticlesContainer = styled.div`
     padding: 0;
     display: flex;
     flex-flow: row nowrap;
+    width:100%;
     
     &:hover{
         text-decoration:none;
@@ -44,11 +45,12 @@ export const TextsHolder = styled.div`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    margin-left: 25px;
-    margin-right: 25px;
+    margin-left: 10px;
+    margin-right: 10px;
     @media screen and ( max-width: 720px ) {
         margin-right: 10px;
         margin-left: 0;
+        width:100%;
     }
 `;
 
@@ -142,7 +144,7 @@ export const TimeOfReading = styled.span`
 `;
 
 export const ImgWrapper = styled.div`
-    display: none;
+
     @media screen and ( max-width: 720px ) {
         display: block;
         order: 2;
@@ -152,7 +154,7 @@ export const ImgWrapper = styled.div`
         width: 20px;
         height: 25px;
         margin-top: 77px;
-        margin-right: 25px;
+        margin-right: 15px;
         &:hover {
             cursor: pointer;
         }

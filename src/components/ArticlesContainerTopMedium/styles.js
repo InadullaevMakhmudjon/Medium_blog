@@ -53,7 +53,7 @@ export const ArticleSecondPreview = styled.div`
     @media screen and ( max-width: 720px ) {
         width: 100%;
         order: 2;
-        margin-top: 80px;
+        margin-top:20px;
     }
 `;
 

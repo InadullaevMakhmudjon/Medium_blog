@@ -36,9 +36,10 @@ export const BrandContainer = styled.div`
     }
 
     @media (max-width: 767px) {
-        width:30%;
+        width:20%;
         img{
             height:45px;
+            margin:0px;
         }
     }
 `;

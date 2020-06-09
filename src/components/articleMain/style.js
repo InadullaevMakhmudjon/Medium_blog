@@ -130,7 +130,8 @@ export const Col1 = styled.div`
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    width:600px;
+    max-width:600px;
+    width:100%;
 `;
 
 export const TextWrapper = styled.div`
