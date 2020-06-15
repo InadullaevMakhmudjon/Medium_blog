@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-
+import ClampLines from 'react-clamp-lines';
 
 export const StyledContainer = styled.div`
     width: 100%;
@@ -13,22 +13,23 @@ export const StyledContainer = styled.div`
     padding-left: ${(props) => (props.paddingLeft100 ? '100px' : '0px')};
     border-bottom: ${(props) => (props.hrHide ? 'none' : '1px solid #D5D7D8')};
     @media screen and ( max-width: 800px ) {
-        padding-left: 10px;
+        padding-left: 60px;
+        padding-right:20px;
     }
-    h1 {
-        font-size: ${(props) => (props.big ? '23px' : '21px')};
-        font-weight: 1000;
-        line-height: 25px;
-        margin-bottom: 10px;
-        @media screen and ( max-width: 768px ) {
-        font-size: 18px;
+
+    @media screen and ( max-width: 600px ) {
+        padding-left: 20px;
+        padding-right:20px;
+    }
+
+    @media screen and ( max-width: 600px ) {
+        h2 {
+            font-size:22px;
         }
-            &:hover {
-                cursor: pointer;
-                opacity: 0.5;
-            }
-        }
-    h2 {
+    }
+
+
+    h3 {
         font-size: 14px;
         text-transform: uppercase;
         color: #0787B1;
@@ -42,10 +43,10 @@ export const StyledContainer = styled.div`
         }
     }
 
-    h2 >a{
+    h3 >a{
         color: #0787B1;
     }
-    h3 {
+    h4 {
         font-size: 14px;
         text-transform: uppercase;
         margin-left: 4px;
@@ -54,7 +55,7 @@ export const StyledContainer = styled.div`
         font-size: 12px;
         }
     }
-    h4 {
+    h5 {
         font-size: 14px;
         margin-left: 4px;
         font-weight: 600;
@@ -63,7 +64,7 @@ export const StyledContainer = styled.div`
         font-size: 12px;
         }
     }
-    h5 {
+    h6 {
         display: ${(props) => (props.secondaryTextHide ? 'none' : 'block')};
         font-size: 14px;
         font-weight: 600;
@@ -122,6 +123,10 @@ export const StyledContainer = styled.div`
             height: 60px;
         }
     }
+
+    :hover{
+        cursor:pointer;
+    }
 `;
 
 export const Col1 = styled.div`
@@ -132,6 +137,21 @@ export const Col1 = styled.div`
     flex-wrap: wrap;
     max-width:600px;
     width:100%;
+    padding-right:20px;
+
+    @media screen and ( max-width: 600px ) {
+        padding:0px;
+    }
+
+`;
+
+export const MobileImgWrapperStyle = styled.div`
+    &&&& img{
+        height: 172px;
+        width: 100%;
+        border-radius: 3px;
+        margin-bottom: 20px;
+    }
 `;
 
 export const TextWrapper = styled.div`
@@ -155,4 +175,35 @@ export const ButtonsWrapper = styled.div`
 export const DescribeStyled = styled.div`
     display: block;
     font-size: 14px;
+`;
+
+
+export const TitleStyled = styled.div`
+
+    font-size: ${(props) => (props.big ? '23px' : '21px')};
+    font-weight: 1000;
+    line-height: 25px;
+    margin-bottom: 10px;
+    @media screen and ( max-width: 768px ) {
+    font-size: 18px;
+    }
+        &:hover {
+            cursor: pointer;
+            opacity: 0.5;
+        }
+    
+`;
+
+
+export const ClampLinesStyled = styled(ClampLines)`
+    & button{
+        background:#fff;
+        color:#007bff;
+        border:0;
+        text-transform:lowercase;
+        font-style:italic;
+        font-size:12px;
+        padding:0px;
+
+    }
 `;
