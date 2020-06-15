@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
@@ -11,6 +11,7 @@ import 'slick-carousel/slick/slick-theme.css';
 import { getNav } from '../../redux/modules/navbar/navAction';
 import { navbarSelector } from '../../redux/selectors/navbarSelector';
 
+import { useScrollPosition } from '../../hooks/use-scroll-position';
 
 import {
   StyledNav, LinkContainer, LinkStyled, CarouselWrapper
@@ -21,6 +22,8 @@ const NavMain = ({
   list,
   getNav
 }) => {
+  const { scrollY } = useScrollPosition();
+
   useEffect(() => {
     if (!list.length) {
       getNav();
@@ -58,7 +61,8 @@ const NavMain = ({
   };
 
   return (
-    <StyledNav>
+
+    <StyledNav isFixed={scrollY > 48}>
       <CarouselWrapper>
         <LinkContainer>
           <Slider {...settings}>
@@ -76,6 +80,7 @@ const NavMain = ({
         </LinkContainer>
       </CarouselWrapper>
     </StyledNav>
+
   );
 };
 

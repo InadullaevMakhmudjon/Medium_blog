@@ -10,6 +10,8 @@ import { useWindowSize } from '../../hooks/use-window-size';
 import { getUser } from '../../redux/modules/user/userAction';
 import { logout } from '../../redux/modules/auth/authActions';
 
+import { BellIcon, LoginIcon } from '../../constants/icons';
+
 import {
   StyledNavbar,
   BrandContainer,
@@ -24,6 +26,7 @@ import {
 import BrandLogo from '../../assets/images/logo.png';
 import BrandLogoMobile from '../../assets/icons/logo_small.svg';
 import IconSearch from '../../assets/icons/search.svg';
+// import BellIcon from '../../assets/images/bell.svg';
 
 
 const NavbarMain = ({
@@ -52,7 +55,7 @@ const NavbarMain = ({
   const handleLogout = () => {
     logout(history);
   };
-  console.log(size.width);
+
   return (
     <>
       <StyledNavbar>
@@ -64,10 +67,22 @@ const NavbarMain = ({
         </BrandContainer>
         <StyledNav className="mr-auto">
           <StyledLink>
-            <Nav.Link href="#"><Active>Subscribe</Active></Nav.Link>
+            <Nav.Link href="#">{size.width > 767 ? <Active>Subscribe</Active> : <BellIcon />}</Nav.Link>
           </StyledLink>
           <StyledAccountContainer>
-            {user && user.id === 1 ? <Link to="/login">Sign In</Link> : <UserDropdown user={user} handleLogout={handleLogout} />}
+            {user && user.id === 1 ? (
+
+              <Link
+                to="/login"
+              >
+                {size.width > 767 ? 'Sign In' : <LoginIcon />}
+              </Link>
+            ) : (
+              <UserDropdown
+                user={user}
+                handleLogout={handleLogout}
+              />
+            )}
           </StyledAccountContainer>
           <HR />
           <StyledLink>

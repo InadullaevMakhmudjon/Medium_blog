@@ -75,9 +75,19 @@ export const StyledLink = styled.div`
     img {
         width: 20px;
         height: 20px;
-        margin-left: 20px;
         &:hover {
             opacity: 0.5;
+        }
+    }
+
+    svg{
+        width:20px;
+        height:20px;
+        fill:#C92805;
+        margin:0px;
+
+        &:hover{
+            opacity:0.5;
         }
     }
 
@@ -104,6 +114,13 @@ export const StyledAccountContainer = styled.div`
         }
     }
 
+    svg{
+        width:20px;
+        height:20px;
+        fill:#000;
+
+    }
+
     display:flex;
     justify-content:center;
     align-items:center;
@@ -111,8 +128,7 @@ export const StyledAccountContainer = styled.div`
     a{
         color:#212529;
         opacity:0.8;
-        margin-left:10px;
-        
+        padding:.5rem;
         &:hover{
             opacity:0.5;
         }
