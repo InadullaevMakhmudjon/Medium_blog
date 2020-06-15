@@ -1,12 +1,16 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getHome } from '../../redux/modules/home/homeActions';
-import { homeSelector } from '../../redux/selectors/homeSelector';
+import {
+  articlesBottomSelector,
+  articleTopSelector, currentArticlesCount,
+  totalCounterSelector
+} from '../../redux/selectors/homeSelector';
 import {
   MainPageStyled,
   Content,
-  HR,
+  BorderBottomStyled,
   LoaderWrapper
 } from './style';
 
@@ -15,17 +19,45 @@ import TopArticlesContainer from '../../components/ArticlesContainerTopMedium';
 import HomepageBody from '../../components/HomepageBody';
 import Spinner from '../../components/spinner';
 import Loader from '../../components/Loader';
+import { LoadMore } from '../CategoryPage/style';
 
 const HomePage = ({
-  home, getHome, homeList, loading
+  getHome,
+  articlesTop,
+  articlesBottom,
+  loading,
+  total,
+  currentCount
 }) => {
+  const [page, setPage] = useState(1);
+
   useEffect(() => {
-    if (home && !home.length) {
-      getHome();
+    if (articlesTop && !articlesTop.length) {
+      getHome(page);
     }
-  }, [home]);
+  }, [articlesTop]);
+
+  useEffect(() => {
+    if (page > 1) {
+      getHome(page);
+    }
+  }, [page]);
+
   return (
     <MainPageStyled>
+      {articlesTop.length && articlesBottom.length ? (
+        <>
+          <TopArticlesContainer articles={articlesTop} />
+          <BorderBottomStyled />
+          <Content>
+            <HomepageBody
+              articles={articlesBottom}
+            />
+          </Content>
+        </>
+      ) : null}
+      {!loading && total > currentCount
+        ? <LoadMore onClick={() => setPage(page + 1)}>Load More Articles</LoadMore> : null}
       {loading && (
         <>
           <LoaderWrapper>
@@ -34,44 +66,39 @@ const HomePage = ({
           <Spinner />
         </>
       )}
-      {!loading ? (
-        <>
-          <TopArticlesContainer main={homeList.slice(1, 2)} />
-          <Content>
-            {homeList.slice(2).map((category, idx) => (
-              <HomepageBody
-                key={category.id || idx}
-                articles={category.articles}
-              />
-            ))}
-          </Content>
-        </>
-      ) : null}
     </MainPageStyled>
   );
 };
-
 HomePage.defaultProps = {
-  home: [],
   loading: false,
-  getHome: () => {},
-  homeList: []
+  getHome: () => {
+  },
+  articlesTop: [],
+  articlesBottom: [],
+  total: 0,
+  currentCount: 0
+
 };
 
 HomePage.propTypes = {
-  home: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.any)),
   loading: PropTypes.bool,
   getHome: PropTypes.func,
-  homeList: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.any))
+  articlesTop: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.any)),
+  articlesBottom: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.any)),
+  total: PropTypes.number,
+  currentCount: PropTypes.number
 };
 const mapStateToProps = (state) => ({
   loading: state.homeReducer.loading,
   home: state.homeReducer.home,
-  homeList: homeSelector(state)
+  articlesTop: articleTopSelector(state),
+  articlesBottom: articlesBottomSelector(state),
+  total: totalCounterSelector(state),
+  currentCount: currentArticlesCount(state)
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  getHome: () => dispatch(getHome())
+  getHome: (page) => dispatch(getHome(page))
 });
 
 

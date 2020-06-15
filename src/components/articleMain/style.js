@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import ClampLines from 'react-clamp-lines';
 
-export const StyledContainer = styled.div`
+export const StyledContainer = styled.article`
     width: 100%;
     height: 100%;
     display: flex;
@@ -28,6 +28,10 @@ export const StyledContainer = styled.div`
         }
     }
 
+
+    h1{
+        font-size:1.9rem;
+    }
 
     h3 {
         font-size: 14px;
@@ -106,6 +110,7 @@ export const StyledContainer = styled.div`
         display: ${(props) => (props.imageHide ? 'none' : 'block')};
         width: ${(props) => (props.imageHide ? '0px' : '250px')};
         height: 140px;
+        margin-right:20px;
         @media screen and ( max-width: 991px ) {
             width: 200px;
             height: 110px;
@@ -151,6 +156,7 @@ export const MobileImgWrapperStyle = styled.div`
         width: 100%;
         border-radius: 3px;
         margin-bottom: 20px;
+        object-fit:cover;
     }
 `;
 
@@ -197,13 +203,6 @@ export const TitleStyled = styled.div`
 
 export const ClampLinesStyled = styled(ClampLines)`
     & button{
-        background:#fff;
-        color:#007bff;
-        border:0;
-        text-transform:lowercase;
-        font-style:italic;
-        font-size:12px;
-        padding:0px;
-
+       display:none;
     }
 `;

@@ -43,9 +43,8 @@ export const TextsHolder = styled.div`
 `;
 
 export const ArticleTitle = styled(Link)`
-    font-size: 20px;
+    font-size: 1.9rem;
     font-weight: 600;
-    line-height: 28px;
     color: black;
     padding-top: 12px;
 
@@ -56,12 +55,12 @@ export const ArticleTitle = styled(Link)`
         opacity:0.7;
     }
     @media screen and ( max-width: 750px ) {
-        font-size: 18px;
+        font-size: 1.5rem;
     }
 `;
 
 export const SecondaryTitle = styled.h3`
-    font-size: 13px;
+    font-size: 1rem;
     font-weight: 300;
     line-height: 20px;
     color: grey;

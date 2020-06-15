@@ -5,6 +5,7 @@ import { useHistory, Link } from 'react-router-dom';
 import ClampLines from 'react-clamp-lines';
 
 
+import ReactImageFallback from 'react-image-fallback';
 import { useWindowSize } from '../../hooks/use-window-size';
 
 import { createMarkup } from '../../utils';
@@ -20,7 +21,8 @@ import {
 } from './style';
 
 import ButtonString from '../buttons/ButtonString/index';
-import ImageArticle from '../../assets/images/coronavirus-1.jpg';
+import FallbackBackground from '../../assets/images/Fallback loader.png';
+
 
 const ArticleMain = ({ article, ...props }) => {
   const { width } = useWindowSize();
@@ -28,7 +30,7 @@ const ArticleMain = ({ article, ...props }) => {
   return (
     <StyledContainer {...props} onClick={() => history.push(article.route)}>
       <Col1>
-        <h2>
+        <h1>
           <Link to={article.route}>
             <ClampLinesStyled
               text={article.title_uz}
@@ -40,7 +42,7 @@ const ArticleMain = ({ article, ...props }) => {
               stopPropagation
             />
           </Link>
-        </h2>
+        </h1>
         <TextWrapper>
           <h3>
             {article.categories.map((item, index) => (
@@ -52,7 +54,13 @@ const ArticleMain = ({ article, ...props }) => {
         </TextWrapper>
         {width < 600 && (
           <MobileImgWrapperStyle>
-            <img src={ImageArticle} alt="article" />
+            <ReactImageFallback
+              fallbackImage={FallbackBackground}
+              src={article.image}
+              initialImage={FallbackBackground}
+              alt={article.description_uz}
+              loading="lazy"
+            />
           </MobileImgWrapperStyle>
         )}
         <ClampLinesStyled
@@ -69,7 +77,15 @@ const ArticleMain = ({ article, ...props }) => {
           <ButtonString homePageBtn saveShare />
         </ButtonsWrapper>
       </Col1>
-      {width > 600 && <img src={ImageArticle} alt="article" />}
+      {width > 600 && (
+        <ReactImageFallback
+          fallbackImage={FallbackBackground}
+          src={article.image}
+          initialImage={FallbackBackground}
+          alt={article.description_uz}
+          loading="lazy"
+        />
+      )}
     </StyledContainer>
   );
 };

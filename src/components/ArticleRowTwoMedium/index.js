@@ -1,7 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import ReactImageFallback from 'react-image-fallback';
 
 import { OverlayTrigger, Tooltip } from 'react-bootstrap';
+import FallbackBackground from '../../assets/images/Fallback loader.png';
+
 import {
   ArticlesContainer,
   ImageContainer,
@@ -18,15 +21,19 @@ import {
   StarIcon
 } from './style';
 
-import Img from '../../assets/images/corona-2.jpg';
-import IconSave from '../../assets/icons/save-icon.svg';
 import starIcon from '../../assets/icons/star.png';
 
 
 const ArticleRowTwo = ({ article }) => (
   <ArticlesContainer>
     <ImageContainer>
-      <img src={Img} alt="article" />
+      <ReactImageFallback
+        fallbackImage={FallbackBackground}
+        src={article.image}
+        initialImage={FallbackBackground}
+        alt={article.description_uz}
+        loading="lazy"
+      />
     </ImageContainer>
     <TextsHolder>
       <ArticleTitle to={article.route}>

@@ -3,8 +3,6 @@ import styled from 'styled-components';
 
 export const MainPageStyled = styled.div`
     font-weight: 400;
-    max-width:1440px;
-    margin:auto;
 `;
 
 export const Content = styled.div`
@@ -14,14 +12,12 @@ export const Content = styled.div`
     flex-direction: row;
     flex-wrap: wrap;
     align-items:flex-start;
+    width:100%;
 `;
 
-export const HR = styled.hr`
-    width: 95%;
-    border: 0.8px solid #CCCCCC;
-    @media screen and ( max-width: 700px ) {
-        display: none;    
-    }
+export const BorderBottomStyled = styled.hr`
+    border-bottom:1px solid #D5D7D8;
+    margin:0;
 `;
 
 export const ButtonContainer = styled.div`

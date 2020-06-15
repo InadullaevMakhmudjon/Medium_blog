@@ -4,33 +4,47 @@ import { labelToRoute } from '../../utils';
 
 export const homeList = (state) => state.homeReducer.home;
 
+export const currentArticles = (state) => state.homeReducer.home;
+
+
 export const recommendedArticlesList = (state) => state.articlesReducer.recommendedArticles;
 
+const totalCounter = (state) => state.homeReducer.total;
 
-const createFormattedArticle = (item, categoryArr) => ({
+const createFormattedArticle = (item) => ({
   id: item.id,
   route: `/articles/${item.slug}`,
   title_uz: item.title_uz,
-  title_ru: item.title_ru,
-  description_ru: item.description_ru,
+  title_kr: item.title_kr,
+  image: item.image,
+  description_kr: item.description_kr,
   description_uz: item.description_uz,
   createdAt: moment(item.createdAt).format('MMM Do YYYY'),
   metaFields: item.metaFields,
-  categories: categoryArr
+  categories: item.categories.map((category) => ({
+    id: category.id,
+    label: category.name,
+    route: labelToRoute(`/category/${category.name}`)
+  }))
 });
 
-export const createFormattedSection = (list) => ({
-  id: list.id,
-  label: list.name,
-  route: labelToRoute(`/category/${list.name}`),
-  articles: list.article.map((item) => createFormattedArticle(item, [{
-    id: list.id,
-    label: list.name,
-    route: labelToRoute(`/category/${list.name}`)
-  }]))
-});
-
-export const homeSelector = createSelector(
+export const articleTopSelector = createSelector(
   homeList,
-  (list) => list && list.map(createFormattedSection)
+  (list) => (list.length ? list.slice(0, 5).map(createFormattedArticle) : [])
+);
+
+export const articlesBottomSelector = createSelector(
+  homeList,
+  (list) => (list.length ? list.slice(5).map(createFormattedArticle) : [])
+);
+
+export const totalCounterSelector = createSelector(
+  totalCounter,
+  (count) => (count || 0)
+);
+
+
+export const currentArticlesCount = createSelector(
+  currentArticles,
+  (articles) => articles.length
 );
