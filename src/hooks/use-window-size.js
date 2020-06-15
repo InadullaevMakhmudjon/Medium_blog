@@ -1,31 +1,29 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
-function useWindowSize() {
-  const isClient = typeof window === 'object';
+const viewportContext = React.createContext({});
 
-  function getSize() {
-    return {
-      width: isClient ? window.innerWidth : undefined,
-      height: isClient ? window.innerHeight : undefined
-    };
-  }
+export const ViewportProvider = ({ children }) => {
+  const [width, setWidth] = React.useState(window.innerWidth);
+  const [height, setHeight] = React.useState(window.innerHeight);
+  const handleWindowResize = () => {
+    setWidth(window.innerWidth);
+    setHeight(window.innerHeight);
+  };
 
-  const [windowSize, setWindowSize] = useState(getSize);
+  React.useEffect(() => {
+    window.addEventListener('resize', handleWindowResize);
+    return () => window.removeEventListener('resize', handleWindowResize);
+  }, []);
 
-  useEffect(() => {
-    if (!isClient) {
-      return false;
-    }
+  return (
+    <viewportContext.Provider value={{ width, height }}>
+      {children}
+    </viewportContext.Provider>
+  );
+};
 
-    function handleResize() {
-      setWindowSize(getSize());
-    }
 
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []); // Empty array ensures that effect is only run on mount and unmount
-
-  return windowSize;
-}
-
-export default useWindowSize;
+export const useWindowSize = () => {
+  const { width, height } = React.useContext(viewportContext);
+  return { width, height };
+};

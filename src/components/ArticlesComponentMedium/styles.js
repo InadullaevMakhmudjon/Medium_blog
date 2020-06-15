@@ -10,6 +10,8 @@ export const ArticlesContainer = styled.div`
     flex-flow: column wrap;
     align-items: center;
     justify-content: center;
+
+  
 `;
 
 export const ImageContainer = styled.div`
@@ -29,15 +31,20 @@ export const TextsHolder = styled.div`
     align-items: flex-start;
     margin-left: 70px;
     margin-right: 25px;
+
     @media screen and ( max-width: 1119px ) {
         margin-left: 0;
+    }
+
+    @media screen and ( max-width: 720px ) {
+        width:100%;
+        margin-right:0px;
     }
 `;
 
 export const ArticleTitle = styled(Link)`
-    font-size: 20px;
+    font-size: 1.9rem;
     font-weight: 600;
-    line-height: 28px;
     color: black;
     padding-top: 12px;
 
@@ -48,12 +55,12 @@ export const ArticleTitle = styled(Link)`
         opacity:0.7;
     }
     @media screen and ( max-width: 750px ) {
-        font-size: 18px;
+        font-size: 1.5rem;
     }
 `;
 
 export const SecondaryTitle = styled.h3`
-    font-size: 13px;
+    font-size: 1rem;
     font-weight: 300;
     line-height: 20px;
     color: grey;

@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { ViewportProvider } from '../hooks/use-window-size';
 
 import Auth from '../containers/Auth';
 import HomePage from '../containers/HomePage';
@@ -20,25 +21,29 @@ import '../assets/fonts/font.css';
 
 
 const Root = () => (
-  <Router>
-    <Auth render={() => (
-      <ScrollToTop>
-        <NavbarHeader />
-        <NavMain />
-        <Switch>
-          <Route exact key="r-1" path="/" component={HomePage} />
-          <Route exact key="r-2" path="/category/:id" component={CategoryPage} />
-          <Route exact key="r-3" path="/articles/:slug" component={ArticlePage} />
-          <Route exact key="r-4" path="/sign-up" component={SignUpPage} />
-          <Route exact key="r-5" path="/login" component={SignInPage} />
-          <Route exact key="r-6" path="/forgot-password" component={ForgetPassword} />
-          <Route exact key="r-7" path="/my-profile" component={ProfilePage} />
-        </Switch>
-        <Footer />
-      </ScrollToTop>
-    )}
-    />
-  </Router>
+  <ViewportProvider>
+    <Router>
+      <Auth render={() => (
+        <ScrollToTop>
+
+          <NavbarHeader />
+          <NavMain />
+          <Switch>
+            <Route exact key="r-1" path="/" component={HomePage} />
+            <Route exact key="r-2" path="/category/:id" component={CategoryPage} />
+            <Route exact key="r-3" path="/articles/:slug" component={ArticlePage} />
+            <Route exact key="r-4" path="/sign-up" component={SignUpPage} />
+            <Route exact key="r-5" path="/login" component={SignInPage} />
+            <Route exact key="r-6" path="/forgot-password" component={ForgetPassword} />
+            <Route exact key="r-7" path="/my-profile" component={ProfilePage} />
+          </Switch>
+          {/* <Footer /> */}
+
+        </ScrollToTop>
+      )}
+      />
+    </Router>
+  </ViewportProvider>
 );
 
 export default Root;

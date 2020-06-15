@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { Nav } from 'react-bootstrap';
 
+
 export const StyledNav = styled(Nav)`
     width: 100%;
     height: 36px;
@@ -10,6 +11,14 @@ export const StyledNav = styled(Nav)`
     flex-direction: row;
     justify-content: center;
     align-items: center;
+
+    ${({ isFixed }) => isFixed && `
+        position:fixed;
+        background:#fff;
+        z-index:5;
+        top:0;
+    `}
+
     
 `;
 

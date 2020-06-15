@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { OverlayTrigger, Tooltip } from 'react-bootstrap';
+import ReactImageFallback from 'react-image-fallback';
 
 import {
   ArticlesContainer,
@@ -15,28 +16,26 @@ import {
   StarIcon
 } from './style';
 
-import Img from '../../assets/images/corona-3.jpg';
 import starIcon from '../../assets/icons/star.png';
-
+import FallbackBackground from '../../assets/images/Fallback loader.png';
 
 const ArticleThird = ({ article }) => (
   <ArticlesContainer>
     <ImageContainer>
-      <img src={Img} alt="article" />
+      <ReactImageFallback
+        fallbackImage={FallbackBackground}
+        src={article.image}
+        initialImage={FallbackBackground}
+        alt={article.description_uz}
+        loading="lazy"
+      />
     </ImageContainer>
     <TextsHolder>
-      <ArticleTitle to={article.route}>
-        {article.title_uz}
-      </ArticleTitle>
-      <SecondaryTitle>
-        {article.description_uz}
-      </SecondaryTitle>
+      <ArticleTitle to={article.route}>{article.title_uz}</ArticleTitle>
+      <SecondaryTitle>{article.description_uz}</SecondaryTitle>
       <AuthorInfo>
         {article.categories.map((i, idx) => (
-          <AuthorLocation
-            key={i.id || idx}
-            to={i.route}
-          >
+          <AuthorLocation key={i.id || idx} to={i.route}>
             {i.label}
           </AuthorLocation>
         ))}
@@ -44,9 +43,7 @@ const ArticleThird = ({ article }) => (
       <PublishInfo>
         <OverlayTrigger overlay={<Tooltip id="tooltip-disabled">{article.createdAt}</Tooltip>}>
           <span className="d-inline-block">
-            <PublishDate style={{ hoverEvents: 'none' }}>
-              {article.createdAt}
-            </PublishDate>
+            <PublishDate style={{ hoverEvents: 'none' }}>{article.createdAt}</PublishDate>
           </span>
         </OverlayTrigger>
         <StarIcon>

@@ -3,7 +3,8 @@ import actionTypes from '../../../constants/action-types';
 const defaultState = {
   loading: false,
   error: false,
-  home: []
+  home: [],
+  total: null
 
 };
 
@@ -16,7 +17,8 @@ const map = {
     ...state,
     loading: false,
     error: false,
-    home: payload.data
+    home: state.home.length ? [...state.home, ...payload.data.data] : payload.data.data,
+    total: payload.data.total
   }),
   [`${actionTypes.GET_HOME}${actionTypes.REJECTED}`]: (state) => ({
     ...state,
