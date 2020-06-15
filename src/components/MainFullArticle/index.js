@@ -22,7 +22,7 @@ import {
 } from '../constant.styles';
 
 import ButtonString from '../buttons/ButtonString/index';
-import ImageArticle from '../../assets/images/dollar.img';
+import ImageArticle from '../../assets/images/Fallback loader.png';
 
 
 const MainFullArticle = ({ article, loading }) => {

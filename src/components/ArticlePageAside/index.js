@@ -11,7 +11,7 @@ import {
 import RecommendedArticle from '../ArticlesRecommended/index';
 import Spinner from '../spinner';
 
-import ImageSide from '../../assets/images/corona-4.jpg';
+import ImageSide from '../../assets/images/Fallback loader.png';
 
 import { HeadingSmall, TitlesOfSections } from '../constant.styles';
 

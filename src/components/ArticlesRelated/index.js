@@ -14,7 +14,7 @@ import {
   ArticleType
 } from '../constant.styles';
 
-import ImageArticle from '../../assets/images/corona-1.jpg';
+import ImageArticle from '../../assets/images/Fallback loader.png';
 
 
 const ArticleRelated = ({ article }) => (

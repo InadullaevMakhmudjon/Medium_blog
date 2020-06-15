@@ -16,13 +16,13 @@ import {
 import ButtonCustom from '../buttons/ButtonCustom';
 import SocialShareButton from '../SocialMediaShare/index';
 
-import ImageArticle from '../../assets/images/asset1-min.jpg';
+import ImageArticle from '../../assets/images/Fallback loader.png';
 
 const RecommendedArticle = () => (
   <StyledContainer>
     <Row>
       <Col1>
-        <img src={ImageArticle} alt="article"/>
+        <img src={ImageArticle} alt="arti cle" />
       </Col1>
       <Col2>
         <HeadingSmall>You at Work: Doing Your Best Work Remotely</HeadingSmall>
