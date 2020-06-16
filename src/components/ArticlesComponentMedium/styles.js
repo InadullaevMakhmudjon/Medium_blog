@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import ClampLines from 'react-clamp-lines';
 
 export const ArticlesContainer = styled.div`
     width: fit-content;
@@ -10,7 +10,10 @@ export const ArticlesContainer = styled.div`
     flex-flow: column wrap;
     align-items: center;
     justify-content: center;
-
+    
+    &:hover{
+        cursor:pointer;
+    }
   
 `;
 
@@ -25,7 +28,7 @@ export const ImageContainer = styled.div`
     }
 `;
 
-export const TextsHolder = styled.div`
+export const TextsHolder = styled.article`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -42,11 +45,19 @@ export const TextsHolder = styled.div`
     }
 `;
 
-export const ArticleTitle = styled(Link)`
-    font-size: 1.9rem;
-    font-weight: 600;
-    color: black;
+export const ArticleTitle = styled.h1`
+    font-size: 1.3rem;
     padding-top: 12px;
+    margin-bottom:10px;
+    font-weight:600;
+    
+    & a{
+        color: #111;
+    }
+
+    & a:hover{
+        text-decoration:none;
+    }
 
     &:hover {
         cursor: pointer;
@@ -60,10 +71,10 @@ export const ArticleTitle = styled(Link)`
 `;
 
 export const SecondaryTitle = styled.h3`
-    font-size: 1rem;
-    font-weight: 300;
-    line-height: 20px;
-    color: grey;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1;
+    color: #212529;
 `;
 
 export const AuthorInfo = styled.div`
@@ -88,11 +99,11 @@ export const AuthorName = styled.span`
 `;
 
 export const AuthorLocation = styled.span`
-    font-size: 13px;
-    font-weight: 500;
-    line-height: 20px;
+    font-size: 1rem;
+    font-weight: 400;
     color:#212529;
     text-transform:uppercase;
+    line-height:20px;
 
     &:hover {
         text-decoration: underline;
@@ -112,7 +123,7 @@ export const PublishInfo = styled.div`
 `;
 
 export const PublishDate = styled.span`
-    font-size: 12px;
+    font-size: 1rem;
     color: #757575;
     margin-right: 5px;
 `;
@@ -128,5 +139,12 @@ export const StarIcon = styled.div`
     img {
         width: 13px;
         height: 13px;
+    }
+`;
+
+
+export const ClampLinesStyled = styled(ClampLines)`
+    & button{
+       display:none;
     }
 `;

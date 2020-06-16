@@ -166,6 +166,10 @@ export const TextWrapper = styled.div`
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+
+    & a{
+        margin-right:10px;
+    }
 `;
 
 export const ButtonsWrapper = styled.div`

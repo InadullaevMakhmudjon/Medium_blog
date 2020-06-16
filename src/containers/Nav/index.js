@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
@@ -23,6 +23,8 @@ const NavMain = ({
   getNav
 }) => {
   const { scrollY } = useScrollPosition();
+
+  const isFixed = useMemo(() => scrollY > 48, [scrollY]);
 
   useEffect(() => {
     if (!list.length) {
@@ -59,10 +61,8 @@ const NavMain = ({
       }
     ]
   };
-
   return (
-
-    <StyledNav isFixed={scrollY > 48}>
+    <StyledNav isFixed={isFixed}>
       <CarouselWrapper>
         <LinkContainer>
           <Slider {...settings}>

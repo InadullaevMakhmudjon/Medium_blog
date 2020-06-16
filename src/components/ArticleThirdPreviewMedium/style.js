@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import Clamplines from 'react-clamp-lines';
 
-export const ArticlesContainer = styled.div`
+export const ArticlesContainer = styled.article`
     width: fit-content;
     height: fit-content;
     margin: 0;
@@ -9,6 +10,10 @@ export const ArticlesContainer = styled.div`
     display: flex;
     flex-flow: column wrap;
     justify-content: center;
+
+    &:hover{
+        cursor:pointer;
+    }
 `;
 
 export const ImageContainer = styled.div`
@@ -31,7 +36,7 @@ export const TextsHolder = styled.div`
     }
 `;
 
-export const ArticleTitle = styled(Link)`
+export const ArticleTitle = styled.h1`
     font-size: 17px;
     font-weight: 600;
     line-height: 22px;
@@ -40,7 +45,13 @@ export const ArticleTitle = styled(Link)`
     text-decoration:none;
     margin-bottom:10px;
 
-    &:hover {
+    & a{
+      color:#111  
+    }
+
+
+
+    & a:hover {
         cursor: pointer;
         text-decoration:none;
         color:inherit;
@@ -52,10 +63,10 @@ export const ArticleTitle = styled(Link)`
 `;
 
 export const SecondaryTitle = styled.h2`
-    font-size: 13px;
-    font-weight: 300;
+    font-size: 16px;
+    font-weight: 400;
     line-height: 20px;
-    color: grey;
+    color: #212529;
 `;
 
 export const AuthorInfo = styled.div`
@@ -70,7 +81,7 @@ export const AuthorInfo = styled.div`
 `;
 
 export const AuthorName = styled.span`
-    font-size: 13px;
+    font-size: 16px;
     font-weight: 500;
     line-height: 20px;
     margin-right: 5px;
@@ -81,7 +92,7 @@ export const AuthorName = styled.span`
 `;
 
 export const AuthorLocation = styled(Link)`
-    font-size: 13px;
+    font-size: 16px;
     font-weight: 500;
     line-height: 20px;
     color:#212529;
@@ -105,7 +116,7 @@ export const PublishInfo = styled.div`
 `;
 
 export const PublishDate = styled.span`
-    font-size: 12px;
+    font-size: 16px;
     color: #757575;
     margin-right: 5px;
 `;
@@ -122,5 +133,11 @@ export const StarIcon = styled.div`
     img {
         width: 13px;
         height: 13px;
+    }
+`;
+
+export const ClamplinesStyled = styled(Clamplines)`
+    & button{
+        display:none;
     }
 `;
