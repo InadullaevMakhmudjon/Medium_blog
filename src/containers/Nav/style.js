@@ -11,7 +11,8 @@ export const StyledNav = styled(Nav)`
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    position:sticky;
+    position: -webkit-sticky;
+    position: sticky;
     top:0;
     background:#fff;
     z-index:5;
