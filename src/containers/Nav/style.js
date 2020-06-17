@@ -11,15 +11,10 @@ export const StyledNav = styled(Nav)`
     flex-direction: row;
     justify-content: center;
     align-items: center;
-
-    ${({ isFixed }) => isFixed && `
-        position:fixed;
-        background:#fff;
-        z-index:5;
-        top:0;
-    `}
-
-    
+    position:sticky;
+    top:0;
+    background:#fff;
+    z-index:5;
 `;
 
 export const CarouselWrapper = styled.div`

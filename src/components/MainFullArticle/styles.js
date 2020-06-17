@@ -17,6 +17,7 @@ export const StyledContainer = styled.article`
     }
     @media screen and ( max-width: 768px ) {
         width: 100%;
+        margin:0px;
 
     }
 `;

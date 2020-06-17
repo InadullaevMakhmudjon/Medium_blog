@@ -5,9 +5,11 @@ export const StyledContainer = styled.div`
     height: fit-content;
     margin-left: 200px;
     margin-top: 30px;
+
     @media screen and ( max-width: 992px ) {
         width: 100%;
         margin-left: 0px;
+        padding-left:10px;
     }
 `;
 
