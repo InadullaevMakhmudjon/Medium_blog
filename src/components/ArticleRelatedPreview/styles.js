@@ -16,7 +16,7 @@ export const Row = styled.div`
     height: fit-content;
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: flex-start;
     margin-bottom: 50px;
     margin-top: 10px;
     @media screen and ( max-width: 992px ) {
@@ -30,5 +30,6 @@ export const Row = styled.div`
         justify-content: flex-start;
         align-items: flex-start;
         width: 95%;
-    }
+    
+}
 `;
