@@ -1,15 +1,11 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import ClampLines from 'react-clamp-lines';
 
 export const ArticlesContainer = styled.div`
-    width: fit-content;
-    height: fit-content;
     margin-bottom: 20px;
     padding: 0;
     display: flex;
-    flex-flow: row nowrap;
-    width:100%;
-    
     &:hover{
         text-decoration:none;
     }
@@ -19,6 +15,9 @@ export const ArticlesContainer = styled.div`
 export const ImageContainer = styled.div`
     width: 160px;
     height: 110px;
+    display:  flex;
+    flex:1;
+
     img {
         width: 100%;
         height: 100%;
@@ -41,8 +40,9 @@ export const ImageContainer = styled.div`
     }
 `;
 
-export const TextsHolder = styled.div`
+export const TextsHolder = styled.article`
     display: flex;
+    flex:3;
     flex-direction: column;
     align-items: flex-start;
     margin-left: 10px;
@@ -54,19 +54,18 @@ export const TextsHolder = styled.div`
     }
 `;
 
-export const ArticleTitle = styled(Link)`
-    font-size: 14px;
+export const ArticleTitle = styled.h1`
+    font-size: 1.1rem;
     font-weight: 600;
-    line-height: 18px;
     color: black;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
     margin-bottom:10px;
 
-    &:hover {
+    & a{
+        color:#111;
+
+    }
+
+    & a:hover {
         cursor: pointer;
         text-decoration:none;
         opacity:0.7;
@@ -75,15 +74,9 @@ export const ArticleTitle = styled(Link)`
 `;
 
 export const SecondaryTitle = styled.h3`
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    font-size: 13px;
-    font-weight: 300;
-    line-height: 15px;
-    color: grey;
+    font-size: 16px;
+    font-weight: 400;
+    color: #212529;
 `;
 
 export const AuthorInfo = styled.div`
@@ -95,7 +88,7 @@ export const AuthorInfo = styled.div`
 `;
 
 export const AuthorName = styled.span`
-    font-size: 13px;
+    font-size: 16px;
     font-weight: 500;
     line-height: 20px;
     margin-right: 5px;
@@ -109,7 +102,7 @@ export const AuthorName = styled.span`
 `;
 
 export const AuthorLocation = styled(Link)`
-    font-size: 13px;
+    font-size: 16px;
     font-weight: 500;
     line-height: 20px;
     text-transform:uppercase;
@@ -133,7 +126,7 @@ export const PublishInfo = styled.div`
 `;
 
 export const PublishDate = styled.span`
-    font-size: 12px;
+    font-size: 16px;
     color: #757575;
     margin-right: 5px;
 `;
@@ -162,9 +155,17 @@ export const ImgWrapper = styled.div`
 `;
 
 export const StarIcon = styled.div`
+    display:flex;
     margin-left: 5px;
     img {
         width: 13px;
         height: 13px;
+    }
+`;
+
+
+export const ClampLinesStyled = styled(ClampLines)`
+    & button{
+        display:none;
     }
 `;

@@ -8,6 +8,7 @@ import { createMarkup } from '../../utils';
 import {
   StyledContainer,
   Header,
+  HeadingStyled,
   TextWrapper,
   IconWrapper,
   ImageWrapper,
@@ -31,7 +32,7 @@ const MainFullArticle = ({ article, loading }) => {
   return (
     <StyledContainer ref={componentRef}>
       {loading && <Spinner />}
-      {!loading && article && (
+      {article && (
         <>
           <Header>
             <TextWrapper>
@@ -40,7 +41,7 @@ const MainFullArticle = ({ article, loading }) => {
                   <Link key={item.id || index} to={item.route}>{item.label}</Link>
                 ))}
               </ArticleType>
-              <HeadingBig>{article.title_uz}</HeadingBig>
+              <HeadingStyled>{article.title_uz}</HeadingStyled>
               <PublishTime>{article.createdAt}</PublishTime>
             </TextWrapper>
             <IconWrapper>

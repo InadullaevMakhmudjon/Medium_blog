@@ -29,11 +29,11 @@ const HomePage = ({
   total,
   currentCount
 }) => {
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState(3);
 
   useEffect(() => {
     if (articlesTop && !articlesTop.length) {
-      getHome(page);
+      // getHome(page);
     }
   }, [articlesTop]);
 

@@ -20,13 +20,12 @@ export const StyledContainer = styled.article`
     @media screen and ( max-width: 600px ) {
         padding-left: 20px;
         padding-right:20px;
-    }
-
-    @media screen and ( max-width: 600px ) {
         h2 {
             font-size:22px;
         }
     }
+
+
 
 
     h1{
@@ -166,6 +165,10 @@ export const TextWrapper = styled.div`
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+
+    & a{
+        margin-right:10px;
+    }
 `;
 
 export const ButtonsWrapper = styled.div`

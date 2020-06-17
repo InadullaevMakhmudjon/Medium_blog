@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 
-export const StyledContainer = styled.div`
+export const StyledContainer = styled.article`
     width: 50%;
     height: fit-content;
     display: flex;
@@ -12,10 +12,30 @@ export const StyledContainer = styled.div`
         width: 60%;
         margin-left: 10px;
         margin-right: 10px;
+        padding-left:20px;
+        padding-right:20px;
     }
     @media screen and ( max-width: 768px ) {
         width: 100%;
+        margin:0px;
+
     }
+`;
+
+export const HeadingStyled = styled.h1`
+    font-size: 2.5rem;
+    line-height: 1;
+    font-weight: 700;
+    margin-bottom: 20px;
+
+    @media screen and ( max-width: 992px ) {
+     font-size:2rem;
+    }
+
+    @media screen and ( max-width: 768px ) {
+        font-size:1.6rem;
+    }
+
 `;
 
 export const Header = styled.div`
@@ -68,8 +88,8 @@ export const Paragraph = styled.div`
 
     p {
         letter-spacing: -.0104166667em;
-        font-size: 1.1875rem;
-        line-height: 1.9375rem;
+        font-size:1.125rem;
+        line-height: 1.8125rem;
         color: #282828;
         margin-bottom:32px;
     }
